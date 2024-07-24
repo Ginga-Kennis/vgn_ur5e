@@ -3,7 +3,7 @@
 from pathlib import Path
 import rospy
 
-from vgn.detection import VGN, select_local_maxima
+from vgn.detection import VGN, select_local_maxima, remove_grasps_under_ground
 from vgn.rviz import Visualizer
 import vgn.srv
 from vgn.utils import *
@@ -26,6 +26,7 @@ class VGNServer:
         # Compute grasps
         out = self.vgn.predict(tsdf_grid)
         grasps, qualities = select_local_maxima(voxel_size, out, threshold=0.9)
+        grasps, qualities = remove_grasps_under_ground(grasps, qualities, table_height=0.05)
 
         # Visualize detections
         self.vis.grasps(self.frame, grasps, qualities)

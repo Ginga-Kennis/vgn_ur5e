@@ -61,6 +61,15 @@ def select_local_maxima(
     qualities = np.asarray(qualities)
     return grasps, qualities
 
+def remove_grasps_under_ground(grasps, qualities, table_height):
+    grasps_list = []
+    qualities_list = []
+    for i in range(len(grasps)):
+        if grasps[i].pose.to_list()[6] > table_height:
+            grasps_list.append(grasps[i])
+            qualities_list.append(qualities[i])
+    return np.array(grasps_list), np.array(qualities_list)
+
 
 def select_grid(voxel_size, out, threshold=0.9, step=2):
     grasps, qualities = [], []

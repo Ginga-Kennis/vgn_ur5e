@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import cv2
 import cv_bridge
 import rospy
 from sensor_msgs.msg import CameraInfo, Image, PointCloud2

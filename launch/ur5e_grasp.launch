@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<launch>
+  <arg name="launch_rviz" default="true" />
+
+  <!-- Launch camera driver -->
+  <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+    <arg name="enable_pointcloud" value="true" />
+    <arg name="publish_tf" value="false" />
+  </include>
+
+  <!-- Broadcast task transform -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="task_frame_broadcaster" args="0.05 -0.35 -0.07 0.0 0.0 1.0 0.0 base_link task" />
+
+  <!-- Load configuration -->
+  <rosparam command="load" file="$(find vgn)/cfg/hw/ur5e_grasp.yaml" subst_value="true" />
+
+  <!-- Launch Nodes -->
+  <node pkg="vgn" type="tsdf_server.py" name="tsdf_server" />
+  <node pkg="vgn" type="vgn_server.py" name="vgn_server" />
+
+  <!-- Launch rviz -->
+  <node if="$(arg launch_rviz)" pkg="rviz" type="rviz" name="rviz" args="-d $(find vgn)/cfg/hw/ur5e_grasp.rviz" />
+
+</launch>

@@ -1,14 +1,12 @@
 from math import cos, sin
 import numpy as np
 
-try:
-    from robot_helpers.ros.conversions import from_pose_msg, to_pose_msg
-    import ros_numpy
-    from sensor_msgs.msg import PointCloud2, PointField
-    from vgn.grasp import ParallelJawGrasp
-    from vgn.msg import GraspConfig
-except:
-    pass
+
+from robot_helpers.ros.conversions import from_pose_msg, to_pose_msg
+import ros_numpy
+from sensor_msgs.msg import PointCloud2, PointField
+from vgn.grasp import ParallelJawGrasp
+from vgn.msg import GraspConfig
 
 from robot_helpers.spatial import Transform
 

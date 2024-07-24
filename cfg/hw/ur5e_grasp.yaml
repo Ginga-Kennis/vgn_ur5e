@@ -1,0 +1,24 @@
+ur5e_grasp:
+  task_frame_id: task
+  base_frame_id: base_link
+  ee_frame_id: gripper_tcp
+  ee_grasp_offset: [0, 0, 1.0, 0.0, 0.0, 0.0, 0]
+  scan_joints:
+    - [1.5708, -0.7854, -1.5708, -1.920, 1.5708, 0.0]
+    - [2.4435, -1.5708, -1.0472, -2.3562, 1.0472, -0.8727]
+    - [1.5708, -2.2689, -0.0873, -2.7053, 1.5708, 0.0]
+    - [0.6981, -1.5708, -1.0472, -2.3562, 2.0944, 0.8727]
+
+tsdf_server:
+  frame_id: task
+  length: 0.3
+  resolution: 40
+  depth_scaling: 0.001  # Set to 1.0 for Gazebo, 0.001 for a RealSense
+  camera:
+    frame_id: camera_depth_frame
+    info_topic: /camera/depth/camera_info
+    depth_topic: /camera/depth/image_rect_raw
+
+vgn_server:
+  frame_id: task
+  model: $(find vgn)/assets/models/vgn_conv.pth
