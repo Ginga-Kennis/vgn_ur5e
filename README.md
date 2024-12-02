@@ -96,7 +96,7 @@ python3 scripts/train_vgn.py --dataset data/datasets/blocks --augment
 python3 scripts/sim_grasp.py
 ```
 
-## Robot Grasping
+## Robot Grasping (Panda)
 
 This package contains an example of open-loop grasp execution with a Franka Emika Panda and a wrist-mounted Intel Realsense D435.
 
@@ -111,6 +111,17 @@ Run a grasping experiment.
 
 ```
 python3 scripts/panda_grasp.py
+```
+
+## Robot Grasping (UR5e)
+This is an example of adapting the original implementation (Panda arm) to a different robotic arm (UR5e).
+To understand the specific changes made, please refer to commits [<70ee0de>](https://github.com/Ginga-Kennis/vgn_ur5e/commit/70ee0deb06b5f3389244b00318b5fd1d6562dbd6) and [<8e5f6f8>](https://github.com/Ginga-Kennis/vgn_ur5e/commit/8e5f6f8872601093218be134000ddc51bd6b44bb).
+```
+roslaunch vgn ur5e_grasp.launch
+```
+
+```
+python3 scripts/ur5e_grasp.py
 ```
 
 ## Citing
