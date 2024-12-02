@@ -1,6 +1,7 @@
-# Volumetric Grasping Network
+# Volumetric Grasping Network (UR5e)
 
-**Note:** This is a cleaned-up branch including major reformatting. For the original code, checkout `corl2020`. The simulation is work in progress and will not produce the same results as the original publication.
+**Note:** This is an example of adapting the original implementation (Panda arm) to a different robotic arm (UR5e). 
+For more details, please refer to the [Robot Grasping (UR5e)](#robot-grasping-ur5e) section.
 
 ---
 
